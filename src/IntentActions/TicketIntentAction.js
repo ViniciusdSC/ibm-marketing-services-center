@@ -1,11 +1,15 @@
 export default {
-  create_ticket (output, socket) {
-    console.log('create_ticket');
+  create_ticket (req) {
+    return {
+      response: 'Create ticket';
+    }
   },
-  search_ticket (output, socket) {
-    console.log('search_ticket');
-  },
-  default (output, socket) {
-    socket.emit('message', output.generic.text);
+  search_ticket (req) {
+    return {
+      response: `
+        Search 1 \n
+        Search 2
+      `;
+    }
   }
 }
