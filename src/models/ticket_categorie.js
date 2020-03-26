@@ -24,6 +24,9 @@ const model = () => sequelize.define('ticket_categorie', {
       key: 'categorie_id'
     }
   },
+}, {
+  timestamps: false,
+  tableName: 'ticket_categorie'
 });
 
 export default model;

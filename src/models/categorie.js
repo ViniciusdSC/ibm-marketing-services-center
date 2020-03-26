@@ -12,6 +12,9 @@ const model = () => sequelize.define('categorie', {
     type: DataTypes.STRING(100),
     allowNull: false
   }
+}, {
+  timestamps: false,
+  tableName: 'categorie'
 });
 
 export default model;

@@ -20,6 +20,9 @@ const model = () => sequelize.define('user', {
     type: DataTypes.STRING(100),
     allowNull: false
   },
+}, {
+  timestamps: false,
+  tableName: 'user'
 });
 
 export default model;

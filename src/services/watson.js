@@ -30,7 +30,14 @@ export default function () {
     return assistant.message({
       assistantId,
       sessionId,
-      input: { message_type, text }
+      input: { message_type, text },
+      context: {
+        global: {
+          system: {
+            user_id: 1
+          }
+        }
+      }
     });
   }
 

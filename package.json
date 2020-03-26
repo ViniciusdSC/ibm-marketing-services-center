@@ -7,7 +7,8 @@
     "dev": "nodemon -w src --exec \"node -r dotenv/config -r babel-register src --presets env\"",
     "build": "rm -rf dist && babel ./src --out-dir ./dist --source-maps --copy-files",
     "start": "node -r dotenv/config dist",
-    "migrate": "sequelize-cli db:migrate"
+    "migrate": "sequelize-cli db:migrate",
+    "drop:db": "sequelize-cli db:migrate:undo:all"
   },
   "repository": "https://github.com/ViniciusdSC/ibm-marketing-services-center.git",
   "author": "Vinicius de Souza Cardoso",

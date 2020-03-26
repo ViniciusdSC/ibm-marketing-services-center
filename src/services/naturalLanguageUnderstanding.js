@@ -1,11 +1,12 @@
 import NaturalLanguageUnderstandingV1 from 'ibm-watson/natural-language-understanding/v1';
+import { IamAuthenticator } from 'ibm-watson/auth';
 
 const instance = () => (
   new NaturalLanguageUnderstandingV1({
     authenticator: new IamAuthenticator({ apikey: process.env.NLU_API_KEY }),
     version: '2020-02-05',
-    url: procecss.env.NLU_URL
-  });
+    url: process.env.NLU_URL
+  })
 );
 
 const analyze = ({ text }) => (

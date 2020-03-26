@@ -19,7 +19,7 @@ module.exports = {
       data.splice(0, 1);
       const records = data.map(categories => {
         return {
-          name: categories.join('/')
+          name: `/${categories.join('/')}`
         };
       });
 

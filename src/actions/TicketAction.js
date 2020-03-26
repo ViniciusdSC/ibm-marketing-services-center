@@ -4,6 +4,7 @@ import { analyze } from '~/services/naturalLanguageUnderstanding';
 export default {
   async create_ticket (req) {
     const description = req.body.description;
+    let categories_id_list = [];
 
     if (!description) {
       return 'Description not found';
@@ -14,31 +15,37 @@ export default {
     })
     .then(async response => {
       // get all categories id and set in categories_id_list
-      const categories = response.result.categories.map(categorie => { name: categorie.label });
-      const categories_id_list = await categorie_model.findAll({
+      const categories = response.result.categories.map(categorie => categorie.label);
+      categories_id_list = await categorie_model().findAll({
         where: {
           name: categories
         }
-      }).map(categorie => categorie.categorie_id);
+      }).map(categorie => categorie.categorie_id)
+      console.log('categories_id_list', categories_id_list);
     });
-    const ticket_model = await ticket.create({
+    const ticket_model = await ticket().create({
       user_id: 1,
       status_id: 1,
       description
     });
     await categories_id_list.forEach(async categorie_id => {
-      await ticket_categorie.create({
-        ticket_id: ticket_model.id,
+      await ticket_categorie().create({
+        ticket_id: ticket_model.ticket_id,
         categorie_id
       })
     });
-    console.log(ticket_model);
-    return 'Create ticket';
+
+    return 'Your ticket was sucefuly created';
   },
-  search_ticket (req) {
-    return `
-      Search 1 \n
-      Search 2
-    `;
+  async search_ticket (req) {
+    const ticket_list = await ticket().findAll({
+      where: {
+        user_id: 1
+      }
+    }).map(async ticket => (
+      `${ticket.description} - ${(await ticket.getStatus()).name}`
+    ));
+
+    return ticket_list.join('\n');
   }
 }
