@@ -43,7 +43,7 @@ export default {
         user_id: 1
       }
     }).map(async ticket => (
-      `${ticket.description} - ${(await ticket.getStatus()).name}`
+      `${ticket.description} - ${(await ticket.getStatus()).name}<br />`
     ));
 
     return ticket_list.join('\n');
