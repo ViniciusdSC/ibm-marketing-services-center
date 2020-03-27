@@ -26,18 +26,11 @@ export default function () {
     return assistant.deleteSession({ assistantId, sessionId });
   }
 
-  function sendMessage({ message_type = 'text', text }) {
+  function sendMessage({ message_type = 'text', text, user_id }) {
     return assistant.message({
       assistantId,
       sessionId,
-      input: { message_type, text },
-      context: {
-        global: {
-          system: {
-            user_id: 1
-          }
-        }
-      }
+      input: { message_type, text, suggestion_id: user_id.toString() },
     });
   }
 
