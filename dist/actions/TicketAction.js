@@ -46,9 +46,10 @@ exports.default = {
     return 'Your ticket was sucefuly created';
   },
   async search_ticket(req) {
+    const user_id = req.body.user_id;
     const ticket_list = await (0, _models.ticket)().findAll({
       where: {
-        user_id: 1
+        user_id
       }
     }).map(async ticket => `${ticket.description} - ${(await ticket.getStatus()).name}<br />`);
 
