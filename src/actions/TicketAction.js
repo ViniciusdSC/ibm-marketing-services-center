@@ -4,6 +4,8 @@ import { analyze } from '~/services/naturalLanguageUnderstanding';
 export default {
   async create_ticket (req) {
     const description = req.body.description;
+    const user_id = req.body.user_id;
+    const initial_status = 1;
     let categories_id_list = [];
 
     if (!description) {
@@ -24,8 +26,8 @@ export default {
       console.log('categories_id_list', categories_id_list);
     });
     const ticket_model = await ticket().create({
-      user_id: 1,
-      status_id: 1,
+      user_id,
+      status_id: initial_status,
       description
     });
     await categories_id_list.forEach(async categorie_id => {
