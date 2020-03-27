@@ -1,7 +1,7 @@
 {
   "name": "ibm-marketing-services-center",
   "version": "1.0.0",
-  "description": "Socket service for send response to chat",
+  "description": "Api service to interact with database",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon -w src --exec \"node -r dotenv/config -r babel-register src --presets env\"",
@@ -14,12 +14,10 @@
   "author": "Vinicius de Souza Cardoso",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "ibm-watson": "^5.4.0",
-    "sequelize": "^5.21.5",
-    "socket.io": "^2.3.0"
+    "sequelize": "^5.21.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
