@@ -41,6 +41,7 @@ export default {
   },
   async search_ticket (req) {
     const user_id = req.body.user_id;
+    console.log(user_id)
     const ticket_list = await ticket().findAll({
       where: {
         user_id
